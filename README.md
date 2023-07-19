@@ -1,4 +1,5 @@
-
+# Objective
+The primary objective of this analysis was to gain a holistic view of the E-Commerce operations, identifying key performance indicators and making data-driven decisions to optimize the store's performance.
 
 # SQL Techniques Used
 Various SQL functions were employed:
