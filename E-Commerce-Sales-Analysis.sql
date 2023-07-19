@@ -1,8 +1,10 @@
  -- STATISTICS REGARDING DATASET
  
  -- How many orders are there in the dataset?
-SELECT COUNT('Order ID') as total_orders FROM order_details
 
+````
+SELECT COUNT('Order ID') as total_orders FROM order_details	
+````	
 -- What are the different categories of products available?
 SELECT DISTINCT Category FROM order_details;
 
