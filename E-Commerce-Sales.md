@@ -46,7 +46,7 @@ UNION ALL
 SELECT "most expensive product" ,MAX(Amount) AS price FROM
 order_details
 ````
-####### Range of analytics, including customer analysis, product pricing, revenue analysis, profitability analysis, and trend analysis.
+###### Range of analytics, including customer analysis, product pricing, revenue analysis, profitability analysis, and trend analysis.
 
 ##### What is the total profit generated for each category? #####
  ````sql
