@@ -1,7 +1,7 @@
-# Objective
+## Objective
 The primary objective of this analysis was to gain a holistic view of the E-Commerce operations, identifying key performance indicators and making data-driven decisions to optimize the store's performance.
 
-# SQL Techniques Used
+## SQL Techniques Used
 Various SQL functions were employed:
 
 - Aggregate Functions for summarizing data.
@@ -13,7 +13,7 @@ Various SQL functions were employed:
 - Joins to combine data from multiple tables.
 
   
-# Insights
+## Insights
 The analysis provided insights into sales performance, top-selling products, customer behavior, and sales trends.
 
 In this project, we analyzed an Indian E-commerce store dataset from Kaggle, comprising 3 CSV files: List of Orders, Order Details, and Sales Target.
