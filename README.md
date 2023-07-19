@@ -1,5 +1,4 @@
-# E-Commerce-Sales-Analysis
-This project demonstrated the power of SQL queries in analyzing an E-Commerce store dataset. By leveraging various SQL functions and techniques, we gained valuable insights into sales performance, top-selling products, customer behavior, and sales trends. These insights supported data-driven decision-making, helping improve the store's operations
+
 
 # SQL Techniques Used
 Various SQL functions were employed:
@@ -15,3 +14,9 @@ Various SQL functions were employed:
   
 # Insights
 The analysis provided insights into sales performance, top-selling products, customer behavior, and sales trends.
+
+In this project, we analyzed an Indian E-commerce store dataset from Kaggle, comprising 3 CSV files: List of Orders, Order Details, and Sales Target.
+
+- List of Orders: Contains purchase information, including Order ID, Date of Purchase, and customer details.
+- Order Details: Includes order ID, price, quantity, profit, category, and subcategory of products.
+- Sales Target: Holds sales target amount and date for each product category.
