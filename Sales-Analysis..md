@@ -1,73 +1,89 @@
- -- STATISTICS REGARDING DATASET
+###### STATISTICS REGARDING DATASET
  
- -- How many orders are there in the dataset?
+##### How many orders are there in the dataset? #####
 
-````sql
+``` sql
 SELECT COUNT('Order ID') as total_orders FROM order_details;
-````	
--- What are the different categories of products available?
+``` 
+##### What are the different categories of products available?#####
 
 ````sql 
 	SELECT DISTINCT Category FROM order_details;
 ````
--- Calculate the total quantity of products sold across all orders
+##### Calculate the total quantity of products sold across all orders #####
+
+````sql
 SELECT SUM(Quantity) AS TotalQuantity
 FROM order_details;
+````
 
--- How much total revenue has been generated from all orders
+#####  How much total revenue has been generated from all orders #####
+````sql
 SELECT SUM(profit) as TotalRevenue
 FROM order_details;
+````
 
--- Calculate the average quantity per order
+##### Calculate the average quantity per order #####
+````sql 
 SELECT AVG(Quantity) AS AverageQuantity FROM order_details;
-
--- Calculate the price of products in the store 
+````
+#####  Calculate the price of products in the store #####
+````sql
 SELECT AVG(amount)  AS AveragePrice 
 FROM order_details
-
--- How many unique customers have placed orders?
+````
+##### How many unique customers have placed orders? #####
+````sql
 SELECT COUNT(DISTINCT CustomerName)
  FROM customers
+````
  
--- Least and the most expensive products in the store 
+##### Least and the most expensive products in the store  #####
+````sql
 SELECT "Least Expensive Products",MIN(Amount) AS price FROM
 order_details
 UNION ALL
 SELECT "most expensive product" ,MAX(Amount) AS price FROM
 order_details
+````
+####### Range of analytics, including customer analysis, product pricing, revenue analysis, profitability analysis, and trend analysis.
 
--- Range of analytics, including customer analysis, product pricing, revenue analysis, profitability analysis, and trend analysis.
-
- -- What is the total profit generated for each category?
- SELECT Category, SUM(Profit) AS TotalProfit
+##### What is the total profit generated for each category? #####
+ ````sql
+SELECT Category, SUM(Profit) AS TotalProfit
 FROM order_details
 GROUP BY Category;
-
--- How many orders were placed in each category?
+````
+##### How many orders were placed in each category? #####
+````sql
 SELECT Category, COUNT(Order_ID) AS TotalOrders
 FROM order_details
 GROUP BY Category;
+````
 
-
--- How many orders were placed in each subcategories?
+##### How many orders were placed in each subcategories? #####
+````sql
 SELECT category,Sub_Category, COUNT(1)AS Orders 
 FROM order_details
 GROUP BY category,Sub_Category
 ORDER BY category DESC
-
--- What are the sales targets for each category?
+````
+##### What are the sales targets for each category? #####
+````sql
 SELECT Category,SUM(Target)
 FROM sales_target
 GROUP BY Category
-
--- What is the status of the order
+````
+##### What is the status of the order #####
+````sql 
      SELECT *, 
 CASE WHEN profit > 0 THEN 'Profit' 
 	 WHEN profit < 0 THEN 'Loss' 
 	 ELSE 'None' END AS Status 
 FROM order_details; 
-
--- How many orders resulted in profit versus how many orders resulted in loss?
+````
+##### How many orders resulted in profit versus how many orders resulted in loss? #####
+````sql
 With cte AS (SELECT *, 
 CASE WHEN profit > 0 THEN 'Profit' 
 	 WHEN profit < 0 THEN 'Loss' 
@@ -77,8 +93,9 @@ FROM order_details)
 SELECT Status, COUNT(1) FROM
 cte
 GROUP BY Status
-
--- Find out total Cost for each order ID 
+````
+##### Find out total Cost for each order ID #####
+````sql
 With cte2 as (
 SELECT Order_ID, (Amount*Quantity) CostPrice
 FROM order_details)
@@ -86,14 +103,16 @@ FROM order_details)
 SELECT order_id, SUM(CostPrice) AS Total_CostPrice
 FROM cte2 
 GROUP BY order_id ;
-
--- TOP Profitable category
+````
+##### TOP Profitable category #####
+````sql
 SELECT Category,SUM(Profit) as Profit
 FROM order_details
 GROUP BY Category
 ORDER BY profit DESC;
-
--- TOP 3 Profitable Sub-Categories for each category 
+````
+#####  TOP 3 Profitable Sub-Categories for each category #####
+````sql
 WITH Cte3 AS
 (SELECT Category, Sub_Category,SUM(Profit) as Profit,
 dense_rank() OVER(PARTITION BY Category ORDER BY SUM(Profit) DESC) as rnk
@@ -103,8 +122,9 @@ GROUP BY category, Sub_Category)
 SELECT Category, Sub_Category, Profit , rnk
 FROM Cte3
 WHERE rnk <= 3
-
--- Top 5 profitable cities 
+````
+##### Top 5 profitable cities #####
+````sql
 SELECT C.City,SUM(O.Profit) as Profit 
 FROM order_details O
 JOIN customers C
@@ -112,35 +132,40 @@ ON O.Order_ID = C.Order_ID
 GROUP BY c.city
 ORDER BY profit DESC 
 LIMIT 5
-
--- Total Quantity sold per state 
+````
+##### Total Quantity sold per state #####
+````sql
 SELECT O.Category, C.state, SUM(O.Quantity) AS QuantitySold
 FROM customers C
 JOIN order_details O 
 ON O.Order_ID = C.Order_ID
 GROUP BY c.state 
 ORDER BY state ,O.Category
-
--- No of customers state-wise 
+````
+##### No of customers state-wise #####
+````sql
 SELECT State,COUNT(Order_ID) AS Count_Customers
 FROM customers
 GROUP BY State
 ORDER BY state
-
--- Total Revenue Generated by the store 
+````
+##### Total Revenue Generated by the store #####
+````sql
 With cte4 AS 
 (SELECT Order_ID,Category,(Amount*Quantity)+Profit AS Sellprice
 FROM order_details)
 SELECT SUM(Sellprice) AS Total_Revenue FROM
 cte4
-
--- Total Revenue per category 
+````
+##### Total Revenue per category #####
+````sql
 With cte5 AS 
 (SELECT Order_ID,Category,(Amount*Quantity)+Profit AS Sellprice
 FROM order_details)
 SELECT category,SUM(Sellprice) AS Total_Revenue FROM
 cte5
 GROUP BY category;
+````
 
 
 
