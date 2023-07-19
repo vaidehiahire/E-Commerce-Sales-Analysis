@@ -6,8 +6,10 @@
 SELECT COUNT('Order ID') as total_orders FROM order_details;
 ````	
 -- What are the different categories of products available?
-SELECT DISTINCT Category FROM order_details;
 
+````sql 
+	SELECT DISTINCT Category FROM order_details;
+````
 -- Calculate the total quantity of products sold across all orders
 SELECT SUM(Quantity) AS TotalQuantity
 FROM order_details;
