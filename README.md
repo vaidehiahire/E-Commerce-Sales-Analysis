@@ -1,31 +1,16 @@
-## Objective
-The primary objective of this analysis was to gain a holistic view of the E-Commerce operations, identifying key performance indicators and making data-driven decisions to optimize the store's performance.
+# 🛒 E-Commerce Sales Analysis (SQL)
 
-## SQL Techniques Used
-Various SQL functions were employed:
+A MySQL project demonstrating **ANSI SQL** skills for business analytics, optimized for Cognizant's Skill Cluster 1.
 
-- Aggregate Functions for summarizing data.
-- Logical Statements for filtering data.
-- CASE Statement for custom conditions.
-- Subqueries for complex operations.
-- Common Table Expressions (CTE) for readability.
-- Window Functions for calculations across rows.
-- Joins to combine data from multiple tables.
+## 🚀 Features
+- **15+ complex queries**: Joins, CTEs, window functions
+- **3NF-compliant schema**: See [ER Diagram](er_diagram.png)
+- **Query optimization**: Indexing strategies documented
 
-  
-## Insights
-The analysis provided insights into sales performance, top-selling products, customer behavior, and sales trends.
+## 🛠 How to Run
+1. Execute `DDL.sql` to create tables.
+2. Import `sample_data.sql`.
+3. Run `Queries.sql` for insights.
 
-In this project, we analyzed an Indian E-commerce store dataset from Kaggle, comprising 3 CSV files: List of Orders, Order Details, and Sales Target.
-
-- List of Orders: Contains purchase information, including Order ID, Date of Purchase, and customer details.
-- Order Details: Includes order ID, price, quantity, profit, category, and subcategory of products.
-- Sales Target: Holds sales target amount and date for each product category.
-
-📊 These insights can guide decision-making processes, such as optimizing inventory, setting sales targets, tailoring marketing strategies, and identifying areas of improvement to enhance overall performance and profitability.
-
-***
-
-
-
-
+## 📊 Sample Output
+![Query Results](docs/query_results.png)
